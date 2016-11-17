@@ -1,0 +1,234 @@
+.DispMenu {
+	display: none;
+	text-align: left;
+}
+
+.plus {
+	vertical-align: middle;
+	max-width: 20px;
+	max-height: 25px;
+	transition: 0.3s ease-in-out;
+}
+
+.TDNTop {
+	text-align: center;
+	top: 0;
+	margin: 0;
+	padding: 10px;
+	padding-top: 50px;
+	font-family: 'Abel';
+}
+
+.TDNTop .TopNugget {
+	color: #e67e00;
+	display: inline;
+}
+
+.openMenu {
+	font-size: 25px;
+	vertical-align: middle;
+	position: fixed;
+	top: 20px;
+	max-width: 100px;
+	font-family: 'Abel';
+	transition: 0.3s ease-in-out;
+	font-weight: bold;
+	padding: 42px;
+}
+
+.openMenu:hover {
+	max-width: 80px;
+	color: #e67e00;
+	transition: 0.3s ease-in-out;
+	padding-left: 40px;
+	cursor: pointer;
+}
+
+.openMenu:hover a {
+	color: #e67e00;
+}
+
+.openMenu:hover .plus {
+	transition: 0.3s ease-in-out;
+	-ms-transform: rotate(-45deg);
+ /* IE 9 */
+	-webkit-transform: rotate(-45deg);
+ /* Chrome, Safari, Opera */
+	transform: rotate(-45deg);
+	padding-bottom: 10px;
+}
+
+.openMenu:hover .DispMenu {
+	color: #000;
+	display: block;
+	font-size: 18px;
+	width: 200%;
+}
+
+.openMenu:hover .DispMenu li {
+	transition: 0.2s ease-in-out;
+}
+
+.openMenu:hover .DispMenu li:hover {
+	padding-left: 10px;
+	color: #e67e00;
+	transition: 0.2s ease-in-out;
+}
+
+.openMenu:hover .DispMenu li a {
+	color: #000;
+}
+
+.openMenu:hover .DispMenu li a:hover {
+	color: #e67e00;
+	transition: 0.2s ease-in-out;
+}
+
+a {
+	text-decoration: none;
+	color: #000;
+}
+
+.eachPost {
+	display: inline-block;
+	background-color: #f3f3f3;
+	width: 50%;
+	margin: 15px;
+}
+
+.eachPost .postCompTitleStyle {
+	border-bottom: 1px solid #e67e00;
+	width: auto;
+	display: inline-block;
+	font-family: 'ASAP';
+	white-space: pre-line;
+	text-align: center;
+	cursor: default;
+}
+
+.eachPost .postCompBodyStyle {
+	text-align: justify;
+	display: inline-block;
+	white-space: pre-line;
+	overflow-x: hidden;
+	font-family: 'ABEL';
+	margin-left: 15px;
+	margin-right: 15px;
+}
+
+.outerPost {
+	text-align: center;
+}
+
+hr {
+	width: 25%;
+}
+
+.title:hover {
+	cursor: default;
+}
+
+.blogging {
+	text-align: center;
+}
+
+.bloggingStyle {
+	width: 25%;
+	display: inline-block;
+}
+
+.textareaBlog {
+	display: inline-block !important;
+	width: 25% !important;
+	height: 200px !important;
+	margin-top: 10px !important;
+}
+
+.blogTitle {
+	margin-top: 50px;
+	display: inline-block;
+	float: left;
+	padding: 5px 10px 5px 10px;
+}
+
+.subBlogBtn {
+	border: 1px solid #000;
+	background-color: transparent;
+	border-radius: 50px;
+	padding: 5px 10px 5px 10px;
+	margin-top: 5px;
+	float: right;
+}
+
+.subBlogBtn:hover {
+	background-color: #000;
+	color: #fff;
+	cursor: pointer;
+}
+
+a {
+	outline: none;
+}
+
+a:hover {
+	text-decoration: none !important;
+}
+
+button {
+	outline: none;
+}
+
+.postCompTitleStyle {
+	text-align: center;
+}
+
+.closer {
+	margin-top: 50px;
+	float: right;
+	cursor: pointer;
+	font-size: 20px;
+	vertical-align: bottom;
+	text-align: right;
+}
+
+.closer:hover {
+	color: #e67e00;
+}
+
+.editWrap {
+	text-align: center;
+}
+
+.custom {
+	text-align: right;
+	width: 25%;
+	display: inline-block;
+	font-size: 20px;
+	cursor: pointer;
+}
+
+.custom:hover {
+	color: #e67e00;
+}
+
+.hiddenDef {
+	display: none;
+}
+
+.note-editor.note-frame {
+	max-width: 25% !important;
+	margin-top: 10px !important;
+	display: inline-block;
+}
+
+.note-editor.note-frame .note-editing-area .note-editable {
+	height: 200px;
+}
+
+.note-editor.note-frame .note-editing-area .note-editable {
+	text-align: justify;
+}
+
+.titlePost {
+	color: #000 !important;
+}

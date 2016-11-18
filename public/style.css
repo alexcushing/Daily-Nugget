@@ -1,3 +1,19 @@
+@font-face {
+	font-family: 'Abel';
+	font-weight: 400;
+	font-style: normal;
+	src: url("http://fonts.gstatic.com/s/abel/v6/3YEwT2a1878zysq92S8_9w.eot");
+	src: url("http://fonts.gstatic.com/s/abel/v6/3YEwT2a1878zysq92S8_9w.eot?#iefix") format('embedded-opentype'), local('Abel'), local('Abel-regular'), url("http://fonts.gstatic.com/s/abel/v6/UzN-iejR1VoXU2Oc-7LsbvesZW2xOQ-xsNqO47m55DA.woff2") format('woff2'), url("http://fonts.gstatic.com/s/abel/v6/wnJbeWILdr-ZMJJAMsiXsvesZW2xOQ-xsNqO47m55DA.woff") format('woff'), url("http://fonts.gstatic.com/s/abel/v6/N59kklKPso9WzbZH9jwJSg.ttf") format('truetype'), url("http://fonts.gstatic.com/l/font?kit=pb98amgrX4UHZo9JnVPobA&skey=bf47258294911e6d&v=v6#Abel") format('svg');
+}
+
+@font-face {
+	font-family: 'Asap';
+  font-weight: 700;
+  font-style: normal;
+  src: url("http://fonts.gstatic.com/s/asap/v4/KzpxSwmYdiqHjA_2Peg1Xw.eot");
+  src: url("http://fonts.gstatic.com/s/asap/v4/KzpxSwmYdiqHjA_2Peg1Xw.eot?#iefix") format('embedded-opentype'), local('Asap Bold'), local('Asap-700'), url("http://fonts.gstatic.com/s/asap/v4/HI4G3wLGTX3hvDH2Yl4hXALUuEpTyoUstqEm5AMlJo4.woff2") format('woff2'), url("http://fonts.gstatic.com/s/asap/v4/QGN0GG0540fyG6NL_PpOpgLUuEpTyoUstqEm5AMlJo4.woff") format('woff'), url("http://fonts.gstatic.com/s/asap/v4/5DVGWnz9Skaq1amwwwGZEw.ttf") format('truetype'), url("http://fonts.gstatic.com/l/font?kit=CJrjw4xoDEQHEz0xOpNqmA&skey=74c571863af0d085&v=v4#Asap") format('svg');
+}
+
 .DispMenu {
 	display: none;
 	text-align: left;
@@ -92,18 +108,26 @@ a {
 .eachPost {
 	display: inline-block;
 	background-color: #f3f3f3;
+	text-align: justify;
+	padding-left: 15px;
+	padding-right: 15px;
+	padding-top: 5px;
+	padding-bottom: 5px;
 	width: 50%;
 	margin: 15px;
 }
 
 .eachPost .postCompTitleStyle {
 	border-bottom: 1px solid #e67e00;
-	width: auto;
+	width: 100%;
 	display: inline-block;
 	font-family: 'ASAP';
 	white-space: pre-line;
-	text-align: center;
+	text-align: justify;
 	cursor: default;
+	margin: 0;
+	margin-bottom: 10px;
+	margin-top: 10px;
 }
 
 .eachPost .postCompBodyStyle {
@@ -133,9 +157,13 @@ hr {
 }
 
 .bloggingStyle {
-	width: 25%;
+	width: 40%;
 	display: inline-block;
 }
+
+.mce-panel {
+    margin: 0 auto !important;
+	}
 
 .textareaBlog {
 	display: inline-block !important;
@@ -143,9 +171,16 @@ hr {
 	height: 200px !important;
 	margin-top: 10px !important;
 }
+.RichTextEditor__root___2QXK- {
+	display: inline-block !important;
+	width: 40% !important;
+	height: 200px !important;
+	margin-top: 10px !important;
+}
 
 .blogTitle {
-	margin-top: 50px;
+	margin-top: 40px;
+	margin-bottom: 10px;
 	display: inline-block;
 	float: left;
 	padding: 5px 10px 5px 10px;

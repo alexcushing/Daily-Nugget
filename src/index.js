@@ -1,12 +1,15 @@
-import React from 'react';
+import React, {Component, PropTypes} from 'react';
+import RichTextEditor from 'react-rte';
 import ReactDOM from 'react-dom';
+import ReactQuill from 'react-quill';
+import TinyMCE from 'react-tinymce'
 import './index.css';
-import './App.css';
+var Squire = require('squire-rte');
+var TextEditor = require('react-texteditor');
 var ReactRouter = require('react-router');
 var Router  = ReactRouter.Router;
 var Route = ReactRouter.Route;
 import { browserHistory, IndexRoute, useRouterHistory } from 'react-router'
-
 
 /*
   App
@@ -131,11 +134,15 @@ var Posts = React.createClass({
   }
 });
 
+
 /*
   blogtextArea
   <blogtextArea/>
 */
 var BlogTextArea = React.createClass({
+  onTextChange: function(value) {
+    this.setState({ text:value });
+  },
   showText : function (){
     var show = this.refs.hideShow;
     var hide = this.refs.editBtn;
@@ -152,15 +159,17 @@ var BlogTextArea = React.createClass({
     event.preventDefault();
     var blogPost = {
       title : this.refs.title.value,
-      post : this.refs.blog.value
+      post : this.refs.rte.refs.tinymceRef.props.text
     }
     this.props.addBlog(blogPost)
+    console.log("value: ",this.refs.rte.refs.tinymceRef.props.text)
     console.log(blogPost)
     event.preventDefault();
     this.refs.title.value = "";
-    this.refs.blog.value = "";
+    //this.refs.blog.props.value = "";
 
   },
+
   render : function() {
     return (
       <div>
@@ -171,8 +180,9 @@ var BlogTextArea = React.createClass({
                 <input className="blogTitle" placeholder="Title" id="blogTitle" ref="title"></input>
                 <i className="fa fa-times-circle closer" aria-hidden="true" ref="closer" onClick={this.hideText}></i>
               </div><br/>
-              <textarea className="textareaBlog" id="myTextarea" ref="blog" placeholder="  Blog Post" rows="4" cols="50">
-              </textarea>
+              {/*<textBox className="textareaBlog" id="myTextarea" ref="blog" value="..." />*/}
+              {/*<ExampleView className="textareaBlog" id="myTextarea" ref="blog" />*/}
+              <TextApp className="textareaBlog"  id="myTextarea" ref="rte" />
               <br/>
               <div className="bloggingStyle">
                 <button className="subBlogBtn" type="submit">Submit</button>
@@ -185,8 +195,40 @@ var BlogTextArea = React.createClass({
 })
 
 
+const TextApp = React.createClass({
+
+  getInitialState: function() {
+    return{
+    text: ''
+    }
+  },
+
+  handleEditorChange(e) {
+    console.log(e.target.getContent());
+    this.setState({ text:e.target.getContent()});
+
+  },
+
+  render() {
+    return (
+      <TinyMCE
+        ref="tinymceRef"
+        text={this.state.text}
+        content=""
+        config={{
+          plugins: 'autolink link image lists print preview',
+          width: '40%',
+          height: '300px',
+          margin: '0 auto',
+          toolbar: 'undo redo | bold italic | alignleft aligncenter alignright'
+        }}
+        onChange={this.handleEditorChange}
+      />
+    );
+  }
+});
 
 ReactDOM.render(
-  <App />,
+    <App />,
   document.getElementById('root')
 );

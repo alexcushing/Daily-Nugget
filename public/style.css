@@ -14,10 +14,10 @@
   src: url("http://fonts.gstatic.com/s/asap/v4/KzpxSwmYdiqHjA_2Peg1Xw.eot?#iefix") format('embedded-opentype'), local('Asap Bold'), local('Asap-700'), url("http://fonts.gstatic.com/s/asap/v4/HI4G3wLGTX3hvDH2Yl4hXALUuEpTyoUstqEm5AMlJo4.woff2") format('woff2'), url("http://fonts.gstatic.com/s/asap/v4/QGN0GG0540fyG6NL_PpOpgLUuEpTyoUstqEm5AMlJo4.woff") format('woff'), url("http://fonts.gstatic.com/s/asap/v4/5DVGWnz9Skaq1amwwwGZEw.ttf") format('truetype'), url("http://fonts.gstatic.com/l/font?kit=CJrjw4xoDEQHEz0xOpNqmA&skey=74c571863af0d085&v=v4#Asap") format('svg');
 }
 
-.DispMenu {
-	display: none;
-	text-align: left;
+html, body{
+	height: 100%;
 }
+
 
 .plus {
 	vertical-align: middle;
@@ -40,64 +40,23 @@
 	display: inline;
 }
 
-.openMenu {
-	font-size: 25px;
-	vertical-align: middle;
-	position: fixed;
-	top: 20px;
-	max-width: 100px;
-	font-family: 'Abel';
-	transition: 0.3s ease-in-out;
-	font-weight: bold;
-	padding: 42px;
-}
-
-.openMenu:hover {
-	max-width: 80px;
-	color: #e67e00;
-	transition: 0.3s ease-in-out;
-	padding-left: 40px;
-	cursor: pointer;
-}
-
-.openMenu:hover a {
-	color: #e67e00;
-}
-
-.openMenu:hover .plus {
-	transition: 0.3s ease-in-out;
-	-ms-transform: rotate(-45deg);
- /* IE 9 */
-	-webkit-transform: rotate(-45deg);
- /* Chrome, Safari, Opera */
-	transform: rotate(-45deg);
-	padding-bottom: 10px;
-}
-
-.openMenu:hover .DispMenu {
-	color: #000;
-	display: block;
+.DispMenu{
+	margin-top: 20px;
+	margin-bottom: 20px;
+	text-decoration: none;
+	padding-left: 5px;
+	list-style: none;
 	font-size: 18px;
-	width: 200%;
 }
 
-.openMenu:hover .DispMenu li {
-	transition: 0.2s ease-in-out;
-}
-
-.openMenu:hover .DispMenu li:hover {
-	padding-left: 10px;
-	color: #e67e00;
-	transition: 0.2s ease-in-out;
-}
-
-.openMenu:hover .DispMenu li a {
-	color: #000;
-}
-
-.openMenu:hover .DispMenu li a:hover {
-	color: #e67e00;
-	transition: 0.2s ease-in-out;
+.DispMenu li{
+	list-style: none;
+	text-decoration: none;
+	overflow: hidden;
+	text-align: left;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	text-overflow: ellipsis;
 }
 
 a {
@@ -113,7 +72,7 @@ a {
 	padding-right: 15px;
 	padding-top: 5px;
 	padding-bottom: 5px;
-	width: 50%;
+	width: 70%;
 	margin: 15px;
 }
 
@@ -128,6 +87,20 @@ a {
 	margin: 0;
 	margin-bottom: 10px;
 	margin-top: 10px;
+}
+
+.mainNav{
+    background: #f3f3f3;
+    max-width: 10%;
+    height: 100%;
+    width: 200px;
+    position: fixed;
+    top: 0;
+    overflow-y: scroll;
+}
+
+::-webkit-scrollbar {
+display: none;
 }
 
 .eachPost .postCompBodyStyle {
@@ -157,7 +130,7 @@ hr {
 }
 
 .bloggingStyle {
-	width: 40%;
+	width: 70%;
 	display: inline-block;
 }
 
@@ -173,7 +146,7 @@ hr {
 }
 .RichTextEditor__root___2QXK- {
 	display: inline-block !important;
-	width: 40% !important;
+	width: 70% !important;
 	height: 200px !important;
 	margin-top: 10px !important;
 }

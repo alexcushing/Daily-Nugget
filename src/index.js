@@ -7,8 +7,11 @@ import './index.css';
 var Squire = require('squire-rte');
 var TextEditor = require('react-texteditor');
 var ReactRouter = require('react-router');
+var $ = require("jquery");
 var Router  = ReactRouter.Router;
 var Route = ReactRouter.Route;
+var HtmlToReactParser = require('html-to-react').Parser;
+import renderHTML from 'react-render-html';
 import { browserHistory, IndexRoute, useRouterHistory } from 'react-router'
 
 /*
@@ -44,7 +47,7 @@ var App = React.createClass({
   <Header/>
 */
 var Header = React.createClass({
-  render : function() {
+  render : function() {//this.refs.blog.props.value
     return (
       <header className="top">
         <h1 className="TDNTop"><div className="title">The Daily <div className="TopNugget">Nugget</div>
@@ -63,8 +66,11 @@ var Header = React.createClass({
 var TDNMenu = React.createClass({
   render : function() {
     return (
-      <div className="fullStretch">
-        <p className="openMenu"><div className="plus hiddenPls">+</div><DispMenu blogPost={this.props.blogPost}/></p>
+      <div className="mainNav">
+        {/*}<div className="fullStretch">
+          <p className="openMenu"><div className="plus hiddenPls">+</div><DispMenu blogPost={this.props.blogPost}/></p>
+        </div>*/}
+        <DispMenu blogPost={this.props.blogPost} />
       </div>
     )
   }
@@ -84,11 +90,11 @@ var PostComp = React.createClass({
   render : function () {
     return(
       <div className="outerPost">
-      <div className="eachPost" id={this.props.details.title}>
-        <h2 className="postCompTitleStyle"><a className='titlePost'>{this.props.details.title}</a></h2>
-        <br/>
-        <p className="postCompBodyStyle">{this.props.details.post}</p>
-      </div>
+        <div className="eachPost" id={this.props.details.title}>
+          <h2 className="postCompTitleStyle"><a className='titlePost'>{this.props.details.title}</a></h2>
+          <br/>
+          <div className="postCompBodyStyle">{this.props.details.post}</div>
+        </div>
       </div>
     )
   }
@@ -121,14 +127,18 @@ var NotFound = React.createClass({
   }
 });
 
+//alpal
 var Posts = React.createClass({
   PostBlogLive : function (key) {
-    return<PostComp key={key} index={key} details={this.props.blogPost[key]}/>
+    var currKey = this.props.blogPost[key]
+    console.log('current key: ', currKey, 'key: ', key);
+    var htmlBlock = <PostComp key={key} index={key} details={this.props.blogPost[key]}/>
+    return htmlBlock
   },
   render : function() {
     return (
       <div>
-      {Object.keys(this.props.blogPost).map(this.PostBlogLive)}
+          {Object.keys(this.props.blogPost).map(this.PostBlogLive)}
       </div>
     )
   }
@@ -155,18 +165,25 @@ var BlogTextArea = React.createClass({
     show.style.display = 'block';
     hide.style.display = 'none';
   },
+  stateVal:function(){
+    console.log('test funcy', this);
+    text:'';
+    this.refs.rte.resetState()
+  },
   SubmitBlog : function (event){
     event.preventDefault();
+    var deUnicoded = this.refs.rte.refs.tinymceRef.props.text
     var blogPost = {
       title : this.refs.title.value,
-      post : this.refs.rte.refs.tinymceRef.props.text
+      post : deUnicoded
     }
     this.props.addBlog(blogPost)
     console.log("value: ",this.refs.rte.refs.tinymceRef.props.text)
     console.log(blogPost)
     event.preventDefault();
     this.refs.title.value = "";
-    //this.refs.blog.props.value = "";
+    this.refs.rte.state.text="";
+    //this.stateVal();
 
   },
 
@@ -182,7 +199,7 @@ var BlogTextArea = React.createClass({
               </div><br/>
               {/*<textBox className="textareaBlog" id="myTextarea" ref="blog" value="..." />*/}
               {/*<ExampleView className="textareaBlog" id="myTextarea" ref="blog" />*/}
-              <TextApp className="textareaBlog"  id="myTextarea" ref="rte" />
+              <TextApp className="textareaBlog"  id="myTextarea" ref="rte" stateVal = {this.props.resetState} />
               <br/>
               <div className="bloggingStyle">
                 <button className="subBlogBtn" type="submit">Submit</button>
@@ -203,6 +220,11 @@ const TextApp = React.createClass({
     }
   },
 
+  resetState: function(e) {
+    var x = document.getElementById("tinymce")
+    console.log('got this far, bud. keep it up :)', x );
+  },
+
   handleEditorChange(e) {
     console.log(e.target.getContent());
     this.setState({ text:e.target.getContent()});
@@ -214,11 +236,13 @@ const TextApp = React.createClass({
       <TinyMCE
         ref="tinymceRef"
         text={this.state.text}
+        resetState={this.resetState}
         content=""
         config={{
           plugins: 'autolink link image lists print preview',
-          width: '40%',
-          height: '300px',
+          entity_encoding : "raw",
+          width: '70%',
+          height: '400px',
           margin: '0 auto',
           toolbar: 'undo redo | bold italic | alignleft aligncenter alignright'
         }}
